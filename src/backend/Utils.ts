@@ -71,7 +71,38 @@ export default class Utils {
     })
   }
 
-  static harmonizeAgs(ags: string): string {
+static filter(alerts: Alert[], config: Config): Alert[] {
+
+	let filteredAlerts: Alert[] = []
+
+	// Lösche Warnungen mit ungewünschtem Titel.
+	if (config.filterTitles) {
+		const unwantedTitles = Array.isArray(config.unwantedTitles) ? config.unwantedTitles : [config.unwantedTitles]
+		filteredAlerts = alerts.filter((alert) => !unwantedTitles.includes(alert.i18nTitle.de))
+	} else{
+		filteredAlerts = alerts
+	}
+
+	const knownIds: string[] = []
+	if (config.mergeAlerts) {
+		return filteredAlerts.filter((alert) => {
+			  if (knownIds.includes(alert.id)) {
+				const existing = filteredAlerts.find((existingAlert) => existingAlert.id === alert.id)
+				existing.cityName += ` | ${alert.cityName}`
+
+				return false
+			  }
+			  knownIds.push(alert.id)
+
+			  return true
+			})
+	} else {
+		return filteredAlerts
+	}
+}
+
+
+static harmonizeAgs(ags: string): string {
     return `${ags.substring(0, ags.length - 7)}0000000`
   }
 }

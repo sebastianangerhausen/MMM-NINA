@@ -31,7 +31,7 @@ module.exports = NodeHelper.create({
         }
       }
 
-      this.sendSocketNotification('NINA_ALERTS_RESPONSE', Utils.removeDuplicates(alerts, config))
+      this.sendSocketNotification('NINA_ALERTS_RESPONSE', Utils.filter(alerts, config))
     } else {
       Log.warn(`${notification} is invalid notification`)
     }

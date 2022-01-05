@@ -4,6 +4,9 @@ export type Config = {
   downgradeCancelSeverity: boolean
   excludeProviders: string[]
   hideCancelledWarnings: boolean
+  unwantedTitles: string | string[]
+  mergeAlerts: boolean
+  filterTitles: boolean
   maxAgeInHours: number
   maxWidth?: string
   mergeAlerts?: boolean
