@@ -5,14 +5,14 @@
   "main": "MMM-NINA.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jalibu/MMM-NINA.git"
+    "url": "git+https://github.com/sebastianangerhausen/MMM-NINA.git"
   },
   "author": "Jan.Litzenburger@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jalibu/MMM-NINA/issues"
+    "url": "https://github.com/sebastianangerhausen/MMM-NINA/issues"
   },
-  "homepage": "https://github.com/jalibu/MMM-NINA#readme",
+  "homepage": "https://github.com/sebastianangerhausen/MMM-NINA#readme",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c --sourcemap=inline",
