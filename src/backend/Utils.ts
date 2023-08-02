@@ -81,24 +81,26 @@ static filter(alerts: Alert[], config: Config): Alert[] {
 		filteredAlerts = alerts.filter((alert) => !unwantedTitles.includes(alert.i18nTitle.de))
 	} else{
 		filteredAlerts = alerts
-	}
+	
+	
+	return removeDuplicates(filteredAlerts, config)
 
-	const knownIds: string[] = []
-	if (config.mergeAlerts) {
-		return filteredAlerts.filter((alert) => {
-			  if (knownIds.includes(alert.id)) {
-				const existing = filteredAlerts.find((existingAlert) => existingAlert.id === alert.id)
-				existing.cityName += ` | ${alert.cityName}`
+	// const knownIds: string[] = []
+	// if (config.mergeAlerts) {
+		// return filteredAlerts.filter((alert) => {
+			  // if (knownIds.includes(alert.id)) {
+				// const existing = filteredAlerts.find((existingAlert) => existingAlert.id === alert.id)
+				// existing.cityName += ` | ${alert.cityName}`
 
-				return false
-			  }
-			  knownIds.push(alert.id)
+				// return false
+			  // }
+			  // knownIds.push(alert.id)
 
-			  return true
-			})
-	} else {
-		return filteredAlerts
-	}
+			  // return true
+			// })
+	// } else {
+		// return filteredAlerts
+	// }
 }
 
 
